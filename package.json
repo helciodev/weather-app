@@ -2,12 +2,12 @@
   "name": "weather-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "controller.js",
   "scripts": {
     "build": "webpack --watch",
-		"dev": "webpack --mode development",
-		"build-production": "webpack --mode production",
-		"start": "webpack-dev-server --mode development --open"
+    "dev": "webpack --mode development",
+    "build-production": "webpack --mode production",
+    "start": "webpack-dev-server --mode development --open"
   },
   "repository": {
     "type": "git",
