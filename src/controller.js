@@ -2,7 +2,7 @@ import * as view from './view';
 
 const init = () => {
   let temperature = 'celsius';
-  // const proxy = 'http://cors-anywhere.herokuapp.com/';
+  const proxy = 'http://cors-anywhere.herokuapp.com/';
   const apiKey = 'f7c2cc6f11db4a4873f18ec881fd1be0';
 
   window.addEventListener('load', () => {
@@ -14,7 +14,7 @@ const init = () => {
         lat = position.coords.latitude;
         lon = position.coords.longitude;
 
-        const api = `api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
+        const api = `${proxy}api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
 
         const showData = async () => {
           try {
@@ -60,7 +60,7 @@ const init = () => {
     const city = view.cityInput.value;
     view.cityInput.value = null;
 
-    const anotherCityApi = `api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
+    const anotherCityApi = `${proxy}api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`;
 
     const showAnotherCityData = async () => {
       try {
