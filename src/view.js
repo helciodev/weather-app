@@ -16,9 +16,11 @@ export const renderWeather = (item) => {
   tempElement.textContent = `${Math.floor(item.main.temp)} °`;
   locationElement.textContent = `${item.name}, ${item.sys.country}`;
   description.textContent = `${item.weather[0].description}`;
-  pressure.textContent = item.main.pressure;
-  feelLike.textContent = `${Math.floor(item.main.feels_like)} °C`;
-  humidity.textContent = item.main.humidity;
+  pressure.textContent = `Pressure: ${item.main.pressure}`;
+  feelLike.textContent = `Feels like: ${Math.floor(item.main.feels_like)} °C`;
+  humidity.textContent = `Humidity: ${item.main.humidity}`;
+  celsius.textContent = 'C';
+  fahrenheit.textContent = 'F';
 };
 
 export const showError = (err) => {
