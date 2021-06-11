@@ -28,15 +28,15 @@ export const renderWeather = (item) => {
 export const weatherBg = (weather) => {
   if (weather === 'Clear') {
     body.style.background = 'linear-gradient(to bottom right, rgb(53, 114, 149), rgb(125, 207, 235))';
-  } if (weather === 'Rain') {
+  } else if (weather === 'Rain') {
     body.style.background = 'linear-gradient(to top left, rgb(70, 96, 85), rgb(31, 172, 216))';
-  } if (weather === 'Snow') {
+  } else if (weather === 'Snow') {
     body.style.background = 'linear-gradient(to top left, rgb(217, 227, 223), rgb(103, 141, 153))';
-  } if (weather === 'Thunderstorm') {
+  } else if (weather === 'Thunderstorm') {
     body.style.background = 'linear-gradient(to top left, rgb(31, 33, 32), rgb(14, 92, 117))';
-  } if (weather === 'Drizzle') {
+  } else if (weather === 'Drizzle') {
     body.style.background = 'linear-gradient(to top left, rgb(146, 183, 167), rgb(26, 71, 86))';
-  } if (weather === 'Clouds') {
+  } else if (weather === 'Clouds') {
     body.style.background = 'linear-gradient(to top left, rgb(217, 227, 223), rgb(47, 62, 67))';
   } else {
     body.style.background = 'linear-gradient(to bottom right, rgb(53, 114, 149), rgb(125, 207, 235))';
