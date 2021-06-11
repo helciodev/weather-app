@@ -19,7 +19,6 @@ const init = () => {
           try {
             const response = await fetch(api);
             const data = await response.json();
-            console.log(response, data);
             view.renderWeather(data);
             view.fahrenheit.addEventListener('click', () => {
               if (temperature === 'celsius') {
