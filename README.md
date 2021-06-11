@@ -26,6 +26,7 @@ The features of this project are, user can:
 
 1. User as sees the information about his current location weather.
 2. User can search for more than 200 cities around the world.
+3. Users can change the metrics units by clicking on them.
 
 ## Live Demo
 
