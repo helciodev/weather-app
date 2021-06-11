@@ -19,11 +19,12 @@ const init = () => {
           try {
             const response = await fetch(api);
             const data = await response.json();
+            view.weatherBg(data.weather[0].main);
             view.renderWeather(data);
             view.fahrenheit.addEventListener('click', () => {
               if (temperature === 'celsius') {
                 view.tempElement.textContent = `${Math.floor(data.main.temp * 1.8 + 32)} °`;
-                view.feelLike.textContent = `${Math.floor(data.main.feels_like * 1.8 + 32)} °F`;
+                view.feelLike.textContent = `Feels Like: ${Math.floor(data.main.feels_like * 1.8 + 32)} °F`;
                 temperature = 'kelvin';
                 view.celsius.classList.remove('font-extrabold');
                 view.fahrenheit.classList.add('font-extrabold');
@@ -36,7 +37,7 @@ const init = () => {
                 temperature = 'celsius';
                 view.fahrenheit.classList.remove('font-extrabold');
                 view.celsius.classList.add('font-extrabold');
-                view.feelLike.textContent = `${Math.floor(data.main.feels_like)} °C`;
+                view.feelLike.textContent = `Feels Like: ${Math.floor(data.main.feels_like)} °C`;
               }
             });
           } catch (error) {
@@ -65,6 +66,7 @@ const init = () => {
       try {
         const anotherCityResponse = await fetch(anotherCityApi);
         const anotherCityData = await anotherCityResponse.json();
+        view.weatherBg(anotherCityData.weather[0].main);
         view.renderWeather(anotherCityData);
       } catch (error) {
         view.showError(error);

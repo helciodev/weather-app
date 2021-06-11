@@ -1,10 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;700&display=swap");
 
 body {
-	background: #357295;
-	background: -webkit-linear-gradient(top left, #357295, #7dcfeb);
-	background: -moz-linear-gradient(top left, #357295, #7dcfeb);
-	background: linear-gradient(to bottom right, #357295, #7dcfeb);
 	height: 100vh;
 	font-family: "Roboto", sans-serif;
+	background: linear-gradient(
+		to bottom right,
+		rgb(53, 114, 149),
+		rgb(125, 207, 235)
+	);
 }
