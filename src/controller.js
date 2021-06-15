@@ -4,10 +4,10 @@ const init = () => {
   // let temperature = 'celsius';
   const TEMP_UNIT = 'metric.imperial';
   const CHECKED_OR_NOT = 'checked.or.not';
-  let checked = JSON.parse(localStorage.getItem(CHECKED_OR_NOT));
+  const checked = JSON.parse(localStorage.getItem(CHECKED_OR_NOT));
   let unit = JSON.parse(localStorage.getItem(TEMP_UNIT)) || 'imperial';
   let currentWeather;
-  let currentFeelsLike;
+  // let currentFeelsLike;
   const apiKey = 'f7c2cc6f11db4a4873f18ec881fd1be0';
   const https = 'https://';
 
@@ -30,7 +30,7 @@ const init = () => {
           try {
             const response = await fetch(api);
             const data = await response.json();
-            currentWeather = data.main.temp
+            currentWeather = data.main.temp;
             view.weatherBg(data.weather[0].main);
             view.renderWeather(data, unit);
           } catch (error) {
@@ -45,7 +45,7 @@ const init = () => {
   });
 
   view.slide.checked = checked;
-  console.log(unit)
+  // console.log(unit);
   view.slide.addEventListener('click', () => {
     if (!view.slide.checked && unit === 'imperial') {
       //  °F = (°C × 9/5) + 32
