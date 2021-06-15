@@ -9,3 +9,35 @@ body {
 		rgb(125, 207, 235)
 	);
 }
+
+.slide {
+	-webkit-appearance: none;
+	appearance: none;
+	outline: none;
+	background: #0c5692;
+	position: relative;
+	height: 30px;
+	width: 70px;
+	border-radius: 20px;
+	cursor: pointer;
+}
+
+.slide::before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	content: "";
+	height: 32px;
+	width: 32px;
+	background-color: #fff;
+	transition: 0.4s;
+	border-radius: 50%;
+}
+
+.slide:checked {
+	background: #2196f3;
+}
+
+.slide:checked::before {
+	left: 40px;
+}

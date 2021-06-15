@@ -6,23 +6,20 @@ const description = document.getElementById('description');
 const pressure = document.getElementById('pressure');
 export const feelLike = document.getElementById('feel-like');
 const humidity = document.getElementById('humidity');
-export const celsius = document.getElementById('celsius');
-export const fahrenheit = document.getElementById('fahrenheit');
 const icon = document.getElementById('icon');
 const alert = document.getElementById('alert');
 export const searchCity = document.getElementById('search-city');
 export const cityInput = document.getElementById('city-input');
 const body = document.getElementById('body');
-export const renderWeather = (item) => {
+export const slide = document.getElementById('slide');
+export const renderWeather = (item, unt) => {
   icon.innerHTML = `<img src='./icons/${item.weather[0].icon}.png'>`;
   tempElement.textContent = `${Math.floor(item.main.temp)} °`;
   locationElement.textContent = `${item.name}, ${item.sys.country}`;
   description.textContent = `${item.weather[0].description}`;
   pressure.textContent = `Pressure: ${item.main.pressure}`;
-  feelLike.textContent = `Feels like: ${Math.floor(item.main.feels_like)} °C`;
-  humidity.textContent = `Humidity: ${item.main.humidity}`;
-  celsius.textContent = 'C';
-  fahrenheit.textContent = 'F';
+  feelLike.textContent = `Feels like: ${Math.floor(item.main.feels_like)} ${unt === 'imperial' ? '°F' : '°C'}`;
+  humidity.textContent = `Humidity: ${item.main.humidity}%`;
 };
 
 export const weatherBg = (weather) => {
@@ -42,6 +39,20 @@ export const weatherBg = (weather) => {
     body.style.background = 'linear-gradient(to bottom right, rgb(53, 114, 149), rgb(125, 207, 235))';
   }
 };
+
+// export const changeUnitRender = (data, uni) => {
+//   if (uni === 'imperial'){
+//     tempElement.textContent = `${Math.floor((data.main.temp - 32) / (5 / 9) )} °`;
+//     celsius.classList.remove('font-extrabold');
+//     fahrenheit.classList.add('font-extrabold');
+//     feelLike.textContent = `Feels Like: ${Math.floor((data.main.feels_like - 32) / (5/9) )} °C`;
+//   }else {
+//     tempElement.textContent = `${Math.floor(data.main.temp * 1.8 + 32)} °`;
+//     feelLike.textContent = `Feels Like: ${Math.floor(data.main.feels_like * 1.8 + 32)} °F`;
+//     fahrenheit.classList.remove('font-extrabold');
+//     celsius.classList.add('font-extrabold');
+//   }
+// }
 
 export const showError = (err) => {
   alert.innerHTML = `<p>${err.message}</p>`;
