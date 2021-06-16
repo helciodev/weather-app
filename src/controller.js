@@ -5,12 +5,11 @@ const init = () => {
   const TEMP_UNIT = 'metric.imperial';
   const CHECKED_OR_NOT = 'checked.or.not';
   const checked = JSON.parse(localStorage.getItem(CHECKED_OR_NOT));
-  let unit = JSON.parse(localStorage.getItem(TEMP_UNIT)) || 'imperial';
+  let unit = JSON.parse(localStorage.getItem(TEMP_UNIT)) || 'metric';
   let currentWeather;
-  // let currentFeelsLike;
+  let currentFeelsLike;
   const apiKey = 'f7c2cc6f11db4a4873f18ec881fd1be0';
   const https = 'https://';
-
   const saveUnit = () => {
     localStorage.setItem(TEMP_UNIT, JSON.stringify(unit));
     localStorage.setItem(CHECKED_OR_NOT, JSON.stringify(view.slide.checked));
@@ -31,6 +30,7 @@ const init = () => {
             const response = await fetch(api);
             const data = await response.json();
             currentWeather = data.main.temp;
+            currentFeelsLike = data.main.feels_like;
             view.weatherBg(data.weather[0].main);
             view.renderWeather(data, unit);
           } catch (error) {
@@ -45,15 +45,37 @@ const init = () => {
   });
 
   view.slide.checked = checked;
-  // console.log(unit);
-  view.slide.addEventListener('click', () => {
-    if (!view.slide.checked && unit === 'imperial') {
+
+  window.addEventListener('click', (e) => {
+    const feelString = 'Feels Like:';
+    if (e.target.id === 'slide') {
+      if (currentWeather - 32 < 0) {
       //  °F = (°C × 9/5) + 32
-      view.tempElement.textContent = `${Math.floor((currentWeather - 32) * (5 / 9))}`;
-      unit = 'metric';
-      saveUnit();
-    } else {
-      view.tempElement.textContent = `${Math.floor(currentWeather)}`;
+        if (!view.slide.checked) {
+          unit = 'imperial';
+          saveUnit();
+          view.tempElement.textContent = `${Math.floor((currentWeather * (9 / 5)) + 32)} °`;
+          view.feelLike.textContent = `${feelString} ${Math.floor((currentFeelsLike * (9 / 5)) + 32)} ° F`;
+        } else {
+          unit = 'metric';
+          saveUnit();
+          view.tempElement.textContent = `${Math.floor(currentWeather)} °`;
+          view.feelLike.textContent = `${feelString} ${Math.floor(currentFeelsLike)} ° C`;
+        }
+      } else if (currentWeather - 32 > 0) {
+      // °C = (°F − 32) x 5/9
+        if (!view.slide.checked) {
+          unit = 'imperial';
+          saveUnit();
+          view.tempElement.textContent = `${Math.floor(currentWeather)} °`;
+          view.feelLike.textContent = `${feelString} ${Math.floor(currentFeelsLike)} ° F`;
+        } else {
+          unit = 'metric';
+          saveUnit();
+          view.tempElement.textContent = `${Math.floor((currentWeather - 32) * (5 / 9))} °`;
+          view.feelLike.textContent = `${feelString} ${Math.floor((currentFeelsLike - 32) * (5 / 9))} °C`;
+        }
+      }
     }
   });
 
@@ -71,6 +93,8 @@ const init = () => {
       try {
         const anotherCityResponse = await fetch(anotherCityApi);
         const anotherCityData = await anotherCityResponse.json();
+        currentWeather = anotherCityData.main.temp;
+        currentFeelsLike = anotherCityData.main.feels_like;
         view.weatherBg(anotherCityData.weather[0].main);
         view.renderWeather(anotherCityData);
       } catch (error) {
