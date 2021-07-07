@@ -16,7 +16,7 @@
 
 ## About
 
-This a weather app build using vanilla JavaScript that consumes data from the open weather API
+A weather app that gets user location and fetches the current weather from the open weather API. The user can search up from more than 220 cities around the world, user can also choose which unit the temperature will be displayed by pressing the toggle button.
 
 ![Screenshot-main-page](dist/icons/app-screenshot.png)
 
