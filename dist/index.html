@@ -15,36 +15,43 @@
   <h1 class="text-4xl text-white text-center font-bold capitalize mt-10">weather app</h1>
 
   <div class=" w-4/5 md:w-3/5 mx-auto mt-10 text-center ">
-    <div>
-      <form id="search-city">
-        <input id="city-input" type="text"
-          class="px-1 py-2 outline-none text-center bg-transparent border-b text-white placeholder-gray-200"
-          placeholder="search for city">
-        <input type="submit" value="search"
-          class="px-1 py-2 bg-transparent rounded-sm cursor-pointer text-white uppercase">
-      </form>
-    </div>
-    <div class="location text-white mt-4 mt-3">
+  <div id="loading-anim" class ="flex justify-center align-center">
+      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <lottie-player src="https://assets6.lottiefiles.com/packages/lf20_m1cxkbt2.json"  background="transparent"  speed="1"  style="width: 300px; height: 300px;"  loop autoplay></lottie-player>
+  </div>
+    <div id="search-show" class="hidden">
+    
+        <div>
+          <form id="search-city">
+            <input id="city-input" type="text"
+              class="px-1 py-2 outline-none text-center bg-transparent border-b text-white placeholder-gray-200"
+              placeholder="search for city">
+            <input type="submit" value="search"
+              class="px-1 py-2 bg-transparent rounded-sm cursor-pointer text-white uppercase">
+          </form>
+        </div>
+        <div class="location text-white mt-4 mt-3">
 
-    </div>
-    <div class="icon-temp flex justify-around items-center md:w-1/2 mx-auto">
+        </div>
+        <div class="icon-temp flex justify-around items-center md:w-1/2 mx-auto">
 
-      <div id="icon" class="icon text-white mt-4 transition-all duration-150">
-      </div>
-      <div class="temperature text-white font-bold text-6xl mt-4 transition-all duration-150">
-      </div>
-      <div class="flex-col text-3xl text-white">
-        <div>F  C</div>
-          <input id="slide" class ="slide" type="checkbox">
-      </div>
-    </div>
-    <div id="description" class="text-center text-3xl mt-2 text-white transition-all duration-150">
+          <div id="icon" class="icon text-white mt-4 transition-all duration-150">
+          </div>
+          <div class="temperature text-white font-bold text-6xl mt-4 transition-all duration-150">
+          </div>
+          <div class="flex-col text-3xl text-white">
+            <div>F  C</div>
+              <input id="slide" class ="slide" type="checkbox">
+          </div>
+        </div>
+        <div id="description" class="text-center text-3xl mt-2 text-white transition-all duration-150">
 
-    </div>
-    <div class="flex justify-around text-white mt-3 capitalize">
-       <span id="feel-like" class="md:-ml-12 lg:-ml-6 font-bold transition-all duration-150"></span>
-       <span id="humidity" class="md:-ml-12 lg:-ml-6 font-bold transition-all duration-150"></span>
-       <span id="pressure" class="md:-ml-12 lg:-ml-6 font-bold transition-all duration-150"></span>
+        </div>
+        <div class="flex justify-around text-white mt-3 capitalize">
+          <span id="feel-like" class="md:-ml-12 lg:-ml-6 font-bold transition-all duration-150"></span>
+          <span id="humidity" class="md:-ml-12 lg:-ml-6 font-bold transition-all duration-150"></span>
+          <span id="pressure" class="md:-ml-12 lg:-ml-6 font-bold transition-all duration-150"></span>
+        </div>
     </div>
   </div>
   <script src="main.js"></script>

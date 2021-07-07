@@ -29,6 +29,10 @@ const init = () => {
           try {
             const response = await fetch(api);
             const data = await response.json();
+            // console.log(view.loadingAnim);
+            // console.log(view.searchShow);
+            view.loadingAnim.classList.add('hidden');
+            view.searchShow.classList.remove('hidden');
             currentWeather = data.main.temp;
             currentFeelsLike = data.main.feels_like;
             view.weatherBg(data.weather[0].main);
